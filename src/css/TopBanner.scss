@@ -1,0 +1,22 @@
+@use "common";
+
+.TopBanner {
+  position: relative;
+  background: common.$mainColor;
+  color: common.$whiteColor;
+  padding: 1rem 0;
+  text-align: center;
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    &.Prev {
+      margin-left: -250px;
+    }
+    &.Next {
+      margin-left: 250px;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@use "common";
+
+.Header {
+  position: relative;
+  background: common.$whiteColor;
+  .gnb {
+    position: relative;
+    line-height: 8rem;
+    background: common.$whiteColor;
+
+    ul {
+      display: flex;
+      gap: 40px;
+      font-size: 1.5rem;
+      li {
+        position: relative;
+      }
+      &.right {
+        gap: 2rem;
+        font-size: 2rem;
+        color: rgba(0, 0, 0, 0.3);
+        span {
+            position: absolute;
+            top: 1.5rem;
+            right: -1rem;
+            font-size: 1rem;
+            padding: 0.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: common.$mainColor;
+            line-height: 0.8;
+            color: common.$whiteColor;
+            text-align: center;
+        }
+      }
+    }
+    h1 {
+      position: absolute;
+      top: 0;
+      left: 8rem;
+    }
+
+    .right {
+      position: absolute;
+      top: 0;
+      right: 8rem;
+    }
+  }
+}

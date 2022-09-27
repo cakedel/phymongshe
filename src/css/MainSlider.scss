@@ -1,0 +1,65 @@
+@use "common";
+
+.MainSlider {
+  position: relative;
+
+  .slick-track {
+    transition-duration: 0.5s;
+  }
+  .item {
+    height: calc(100vh - 11.8rem);
+    color: common.$whiteColor;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    &.itm01 {
+      background-image: url(../../public/assets/img/main01.jpg);
+    }
+    &.itm02 {
+      background-image: url(../../public/assets/img/main02.jpg);
+    }
+    &.itm03 {
+      background-image: url(../../public/assets/img/main03.jpg);
+    }
+  }
+  .inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    strong {
+      display: block;
+      margin: 0 0 1rem 0;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+    }
+    p {
+      margin: 0 0 2rem 0;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+    }
+  }
+  .slick-dots {
+    position: absolute;
+    bottom: 8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 0;
+    li {
+      display: inline-block;
+      margin: 0 0.5rem;
+      button {
+        border: none;
+        outline: none;
+        width: 4rem;
+        height: 0.4rem;
+        background: common.$mainColor;
+        cursor: pointer;
+      }
+      &.slick-active button {
+        background: #444;
+      }
+    }
+  }
+}
