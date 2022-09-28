@@ -2,6 +2,9 @@
 
 .MainSlider {
   position: relative;
+  padding: 0;
+  transform: translateY(-8rem);
+  height: calc(100vh - 19.8rem);
 
   .slick-track {
     transition-duration: 0.5s;

@@ -18,7 +18,7 @@ const MainNav = () => {
         <Link to="/">BRAND</Link>
       </li>
       <li>
-        <Link to="/">SHOPPING</Link>
+        <Link to="/shopList">SHOPPING</Link>
       </li>
       <li>
         <Link to="/">REVIEW</Link>

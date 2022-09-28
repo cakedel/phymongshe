@@ -5,12 +5,15 @@ import "../css/Header.scss";
 import { FiShoppingCart } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
 import { FiSearch } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({cart}) => {
   const [on, setOn] = useState(false);
+  useEffect(()=> {
+    
+  })
   useEffect(() => {
-    const scrollEvent = 
-    window.addEventListener("scroll", () => {
+    const scrollEvent = window.addEventListener("scroll", () => {
       let sct = window.scrollY;
       if (sct > 0) {
         setOn(true);
@@ -27,12 +30,12 @@ const Header = () => {
       <TopBanner />
       <div className="gnb">
         <h1>
-          <a href="/">
+          <Link to="/">
             <img
               src={process.env.PUBLIC_URL + "/assets/img/top_logo.png"}
               alt=""
             />
-          </a>
+          </Link>
         </h1>
         <nav className="inner">
           <MainNav />
@@ -43,7 +46,7 @@ const Header = () => {
           </li>
           <li className="cart">
             <FiShoppingCart />
-            <span>0</span>
+            <span>{cart.length}</span>
           </li>
           <li>
             <FiSearch />
