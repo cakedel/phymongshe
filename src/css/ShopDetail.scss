@@ -4,9 +4,9 @@
   padding: 10rem 0;
 
   .inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 5rem 3rem;
-    flex-wrap: wrap;
 
     figure {
       flex: 1 0 15%;

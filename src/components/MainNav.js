@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Menu = [
-  { id: 1, tit: "BRAND" },
-  { id: 2, tit: "SHOPPING" },
-  { id: 3, tit: "REVIEW" },
-  { id: 4, tit: "EVENT" },
-  { id: 5, tit: "COMMUNITY" },
-  { id: 6, tit: "CS CENTER" },
-  { id: 7, tit: "PROFESSIONAL" },
-];
+const MainNav = ({ shopList }) => {
+  //중복이 제거된 배열 category...
+  //https://kyounghwan01.github.io/JS/JSbasic/dupulication-property-remove/#filter
+  // example.filter(
+  //     (arr, index, callback) => index === callback.findIndex(t => t.id === arr.id)
+  //   );
 
-const MainNav = () => {
+  const ncate = shopList.filter(
+    (itm, idx, it) => idx === it.findIndex((t) => t.category === itm.category)
+  );
   return (
     <ul>
       <li>
@@ -20,20 +19,17 @@ const MainNav = () => {
       <li>
         <Link to="/shopList">SHOPPING</Link>
       </li>
+      {ncate.map((it) => {
+        return (
+          it.category && (
+            <li className="list" key={it.id}>
+              <Link to={"/shopList/" + it.category}>{it.category}</Link>
+            </li>
+          )
+        );
+      })}
       <li>
-        <Link to="/">REVIEW</Link>
-      </li>
-      <li>
-        <Link to="/">EVENT</Link>
-      </li>
-      <li>
-        <Link to="/">COMMUNITY</Link>
-      </li>
-      <li>
-        <Link to="/">CENTER</Link>
-      </li>
-      <li>
-        <Link to="/">PROFESSIONAL</Link>
+        <Link to="/">CS CENTER</Link>
       </li>
     </ul>
   );

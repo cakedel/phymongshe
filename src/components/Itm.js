@@ -12,7 +12,7 @@ const Itm = ({ shopList, cart, setCart }) => {
         <img src={matchItm.src} alt="" />
         <div className="right">
           <div className="name">{matchItm.name.substring(0, 5)}</div>
-          <div className="desc">{matchItm.desc.substring(0, 50)}...</div>
+          <div className="desc">{matchItm.desc.substring(0, 100)}...</div>
           <ul className="color">
             {matchItm.color.map((color, idx) => {
               return (

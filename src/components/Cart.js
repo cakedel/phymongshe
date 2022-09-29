@@ -9,7 +9,7 @@ const Cart = ({ cart }) => {
             <li>{cart.id}</li>
             <li>{cart.price}</li>
             <li>{cart.name}</li>
-            {console.log(ca.name)}
+            {console.log(cart.name)}
           </ul>
         );
       })}

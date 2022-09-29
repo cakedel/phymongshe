@@ -1,23 +1,25 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Main from "./pages/Main";
-import Footer from "./components/Footer";
 import List from "./components/List";
-import "./css/ShopDetail.scss";
-import { Route, Routes } from "react-router-dom";
 import Itm from "./components/Itm";
 import Cart from "./components/Cart";
-
+import Category from "./components/Category";
+import "./css/ShopDetail.scss";
+import { Route, Routes } from "react-router-dom";
+//https://desipossa.github.io/shop_cra/assets/data.json
 const App = () => {
-  const [itm, getItm] = useState();
+  const [itm, setItm] = useState();
   const [cart, setCart] = useState([]);
+
   useEffect(() => {
     const url = "https://desipossa.github.io/shop_cra/assets/data.json";
     const getProduct = async () => {
-      const product = await axios.get(url);
-      // console.log(product.data)
-      const shopData = product.data.slice(50, 80).map((it) => {
+      const res = await axios.get(url);
+
+      const shopdata = res.data.slice(50, 140).map((it) => {
         return {
           id: it.id,
           name: it.name,
@@ -27,34 +29,40 @@ const App = () => {
           price: it.price * 1450,
           desc: it.description,
           color: it.product_colors,
-          production: it.created_at,
+          date: it.created_at,
           type: it.product_type,
         };
       });
-      console.log(shopData)
-      getItm(shopData);
+      setItm(shopdata);
     };
     getProduct();
   }, []);
   return (
     <>
-      <Header cart={cart} />
       {itm ? (
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/cart" element={<Cart cart={cart} />} />
-          <Route path="/shopList" element={<List shopList={itm} />} />
-          <Route
-            path="/shopItm/:itm"
-            element={<Itm shopList={itm} cart={cart} setCart={setCart} />}
-          />
-        </Routes>
+        <div className="wapper">
+          <Header cart={cart} shopList={itm} />
+          <Routes>
+            <Route path="/" element={<Main shopList={itm} />} />
+            <Route
+              path="/cart"
+              element={<Cart cart={cart} setCart={setCart} />}
+            />
+            <Route path="/shopList" element={<List shopList={itm} />} />
+            <Route
+              path="/shopList/:category"
+              element={<Category shopList={itm} />}
+            />
+            <Route
+              path="/shopItm/:itm"
+              element={<Itm shopList={itm} cart={cart} setCart={setCart} />}
+            />
+          </Routes>
+          <Footer />
+        </div>
       ) : (
-        <div>Now loading</div>
+        <div>로딩 중 입니다.</div>
       )}
-      {/* 
-      <Main /> */}
-      <Footer />
     </>
   );
 };
